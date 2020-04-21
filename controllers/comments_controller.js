@@ -17,10 +17,12 @@ module.exports.create = async function(req,res){
                 //whenever we updating something in the db then we have to call save() after that to block it. 
                 post.save();
 
+                req.flash('success','You commented on the post!');
+
                 res.redirect('/');
         }
     }catch(err){
-        console.log('Error',err);
+        req.flash('error',err);
         return;
     }
 }
@@ -33,13 +35,15 @@ module.exports.destroy = async function(req,res){
             comment.remove();
 
             let post = await Post.findByIdAndUpdate(postId , {$pull:{comments:req.params.id}});
+            req.flash('success','You had deleted the comment!');
+
             return res.redirect('back');
         }
         else{
             return res.redirect('back');
         }
     }catch(err){
-        console.log('Error',err);
+        req.flash('error',err);
         return; 
     }
     
