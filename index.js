@@ -26,6 +26,9 @@ app.use(cookieParser());
 
 app.use(express.static('./assets'));
 
+//make the uploads path available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));             //the first '/uploads' is route and the 2nd one is used to join the folder with current directory where the root or this file is existed.
+
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);

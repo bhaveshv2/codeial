@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const fs= require('fs');
+const path = require('path');
 
 
 module.exports.profile = function(req, res){
@@ -11,15 +13,44 @@ module.exports.profile = function(req, res){
 }
 
 
-module.exports.update = function(req,res){
+module.exports.update = async function(req,res){
     if(req.user.id==req.params.id){
-        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-            return res.redirect('back');
-        });
+        try{
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req,res,function(err){
+                if(err){
+                    console.log('***Multer Error***',err);
+                }
+
+                user.name =  req.body.name;
+                user.email = req.body.email;
+                if(req.file){
+                    //before this if, there are multiple files are storing in the uploads but now after if it get replaced with new one
+                    if(fs.existsSync(path.join(__dirname,'..',user.avatar))){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+                    //this is saving a path of a uploaded file into the avatar field in the user
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            });
+            
+        }catch(err){
+            console.log('error:',err);
+            return res.direct('back');
+        }
     }
     else{
-        return res.status(401).send('Unauthorised');
+        req.flash('error','Unauthorized!');
+        return res.status(401).send('Unauthorized')
     }
+
+    
+    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+    //         return res.redirect('back');
+    //     });
+    // }
 }
 
 // render the sign up page
