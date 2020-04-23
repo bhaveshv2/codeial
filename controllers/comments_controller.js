@@ -16,6 +16,17 @@ module.exports.create = async function(req,res){
                 post.comments.push(comment);
                 //whenever we updating something in the db then we have to call save() after that to block it. 
                 post.save();
+                
+                if(req.xhr){
+                    comment = await comment.populate('user','name').execPopulate();
+
+                    return res.status(200).json({
+                        data:{
+                            comment:comment
+                        },
+                        message:"Comment created!"
+                    })
+                }
 
                 req.flash('success','You commented on the post!');
 
@@ -35,6 +46,15 @@ module.exports.destroy = async function(req,res){
             comment.remove();
 
             let post = await Post.findByIdAndUpdate(postId , {$pull:{comments:req.params.id}});
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{
+                        comment_id:req.params.id,
+                    },
+                    message:"Comment Deleted!"
+                });
+            }
             req.flash('success','You had deleted the comment!');
 
             return res.redirect('back');

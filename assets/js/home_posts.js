@@ -17,6 +17,9 @@
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button',newPost));
 
+                    // call the create comment class
+                    new PostComments(data.data.post._id);
+
                     new Noty({
                         theme:'relax',
                         text:"Post Published!",
@@ -96,11 +99,13 @@
             let deleteButton = $(' .delete-post-button',self);
             deletePost(deleteButton);
         
-            // // get the post's id by splitting the id attribute
-            // let postId = self.prop('id').split("-")[1];
-            // new PostComments(postId);
+            // get the post's id by splitting the id attribute
+            let postId = self.prop('id').split("-")[1];
+            new PostComments(postId);
         });
     }
+
+    
     createPost();
     convertPostsToAjax();
 }
