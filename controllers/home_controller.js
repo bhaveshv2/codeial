@@ -9,7 +9,7 @@ module.exports.home = async function(req, res){
         .populate('user')
         .populate({                                                              
             path:'comments',
-            options: { sort: { 'created_at': -1 } }, 
+            options: { sort: "-createdAt" }, 
             populate:{
                 path:'user'
             }
