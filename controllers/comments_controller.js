@@ -1,5 +1,6 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+const commentsMailer = require('../mailer/comment_mailer');
 
 module.exports.create = async function(req,res){
     //find the post whether exist or not as some suspect can alter the website and then create the comment after that along with the insert the ids of the comment to the post 
@@ -16,9 +17,12 @@ module.exports.create = async function(req,res){
                 post.comments.push(comment);
                 //whenever we updating something in the db then we have to call save() after that to block it. 
                 post.save();
+
+                comment = await comment.populate('user','name email').execPopulate();
+
+                commentsMailer.newComment(comment);
                 
                 if(req.xhr){
-                    comment = await comment.populate('user','name').execPopulate();
 
                     return res.status(200).json({
                         data:{
