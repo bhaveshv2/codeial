@@ -1,6 +1,9 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
 const commentsMailer = require('../mailer/comment_mailer');
+const queue = require('../config/kue');
+const commentEmailWorker = require('../workers/comment_email_worker');
+
 
 module.exports.create = async function(req,res){
     //find the post whether exist or not as some suspect can alter the website and then create the comment after that along with the insert the ids of the comment to the post 
@@ -20,8 +23,15 @@ module.exports.create = async function(req,res){
 
                 comment = await comment.populate('user','name email').execPopulate();
 
-                commentsMailer.newComment(comment);
-                
+                // commentsMailer.newComment(comment);
+                let job = queue.create('emails',comment).save(function(err){
+                    if(err){
+                        console.log('Error in creating a queue');
+                        return;
+                    }
+
+                    console.log('job enqueued',job.id);
+                });
                 if(req.xhr){
 
                     return res.status(200).json({

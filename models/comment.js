@@ -3,7 +3,7 @@ const mongoose=require('mongoose');
 const commentSchema = new mongoose.Schema({
     content:{
         type:String,
-        retquired:true
+        required:true
     },
 
     //comments belongs to the a user
