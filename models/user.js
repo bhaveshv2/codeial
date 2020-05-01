@@ -21,7 +21,14 @@ const userSchema = new mongoose.Schema({
     avatar:{
         type:String,
 
-    }
+    },
+    //store the friendship whether we have to sent or receive the request in this array
+    friendships:[
+        {
+            type:mongoose.Schema.ObjectId,
+            ref:'Friendship'
+        }
+    ]
 }, {
     timestamps: true
 });
