@@ -1,10 +1,68 @@
 #home-container {
   display: flex;
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
   #home-container #feed-posts {
-    width: 70%;
-    padding: 20px; }
+    width: 70%; }
+    #home-container #feed-posts #post-form-container {
+      text-align: center;
+      width: 100%; }
+      #home-container #feed-posts #post-form-container #new-post-form textarea {
+        width: 90%;
+        height: 10%; }
+      #home-container #feed-posts #post-form-container #new-post-form #post-button {
+        margin-top: 5px; }
+        #home-container #feed-posts #post-form-container #new-post-form #post-button input {
+          border-radius: 0;
+          padding: 0.5rem 1rem; }
+    #home-container #feed-posts ul {
+      padding: 0px; }
+    #home-container #feed-posts #post-container {
+      background-color: white;
+      border-radius: 10px;
+      margin: 10px 50px;
+      padding: 10px; }
+      #home-container #feed-posts #post-container a {
+        text-decoration: none;
+        color: black; }
+      #home-container #feed-posts #post-container #post-content {
+        font-size: 1.2rem; }
   #home-container #user-friends {
     width: 30%;
     padding: 10px;
     border-left: 1px solid lightgrey; }
+  #home-container #signup-container {
+    position: relative;
+    left: 25%;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    #home-container #signup-container #signup-text {
+      text-align: center; }
+      #home-container #signup-container #signup-text h1 {
+        margin-top: 0;
+        padding-top: 10px;
+        color: #2a628f; }
+    #home-container #signup-container #signup-form-container input {
+      width: 50%;
+      padding: 10px;
+      margin: 5px;
+      text-align: center;
+      border-radius: 0%; }
+    #home-container #signup-container #signup-form-container form {
+      text-align: center; }
+    #home-container #signup-container #google-signup-button {
+      width: 25%;
+      margin-top: 10%;
+      position: relative;
+      left: 37.5%; }
+      #home-container #signup-container #google-signup-button button {
+        padding: 10px;
+        width: 100%;
+        border-radius: none; }
+        #home-container #signup-container #google-signup-button button a {
+          text-decoration: none; }

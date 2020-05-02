@@ -15,17 +15,18 @@
     </head>
 
     <body>
-        <%- include('_header'); %>
+        <div id="header-container">
+            <%- include('_header'); %>
+        </div>
 
-       
-        
-        <main id="layout-main">
+        <div id="layout-main">
             <%- body %>
+            
+        </div>
 
-        </main>
-
-
-        <%- include('_footer'); %>
+        <div id="footer-container">
+            <%- include('_footer'); %>
+        </div>
 
         <%- script %>
 

@@ -3,14 +3,19 @@
 <link rel="stylesheet" href="/css/chat_box.css">
 
 <div id="home-container">
-    <section id="feed-posts">
-        <h4>Posts</h4>
-        <% if(locals.user){ %>
-        <form action="/posts/create" id="new-post-form" method="POST">
-            <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
-            <input type="submit" value="Post">
-        </form>
-        <% } %>
+    <div id="feed-posts">
+        <div id="post-form-container">
+            <% if(locals.user){ %>
+            <h4>Create Post</h4>
+            <form action="/posts/create" id="new-post-form" method="POST">
+                <textarea name="content" placeholder="Type Here..."></textarea>
+                <div id="post-button">
+                    <input type="submit" value="Post">
+                </div>
+            </form>
+            <% } %>
+        </div>
+        <% if(locals.user){%>
         <div id="posts-list-container">
             <ul>
                 <% for(post of posts){ %>
@@ -20,19 +25,23 @@
                 <% } %>
             </ul>
         </div>
-    </section>
+    </div>
     
-    <section id="user-friends">
+    <div id="user-friends">
         <h3>Friends</h3>
         <% for(u of all_users){%>
             <p>
                 <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
             </p>
         <%}%>
-    </section>
-
-    <%- include('_chat_box') -%>
-
+    </div>
+    <%}else{%>
+    <div id="signup-container">
+        <%- include('user_sign_up'); -%>
+    </div>
+    <%}%>
+    <!-- <%- include('_chat_box'); -%> -->
+    
 </div>
 
 <script src="/js/home_post_comments.js"></script>

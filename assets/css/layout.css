@@ -1,5 +1,14 @@
 body {
+  height: auto;
+  width: 100%;
   margin: 0;
-  /* text-align: center; */ }
+  background-color: #E9EBEE; }
+  body #header-container {
+    height: 12%; }
   body #layout-main {
-    height: 100%; }
+    height: auto;
+    width: 100%; }
+  body #footer-container {
+    height: 9.75%;
+    width: 100%;
+    margin-bottom: 0; }

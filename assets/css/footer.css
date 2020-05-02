@@ -8,4 +8,7 @@
     color: white;
     text-decoration: none; }
   #layout-footer .footer-nav ul {
-    list-style: none; }
+    list-style: none;
+    display: flex; }
+    #layout-footer .footer-nav ul #home {
+      margin-right: 20px; }

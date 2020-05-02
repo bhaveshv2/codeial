@@ -1,5 +1,6 @@
 #layout-footer{
     color: white;
+
     a{
         color: white;
         text-decoration: none;
@@ -12,7 +13,11 @@
 
     .footer-nav{
         ul{
-            list-style: none;
+            list-style: none; 
+            display: flex;
+            #home{
+                margin-right:20px;
+            }
         }
     }
 }
