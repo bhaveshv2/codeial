@@ -23,10 +23,22 @@ const userSchema = new mongoose.Schema({
 
     },
     //store the friendship whether we have to sent or receive the request in this array
-    friendships:[
+    friends: [
         {
-            type:mongoose.Schema.ObjectId,
-            ref:'Friendship'
+            type: mongoose.Schema.ObjectId,
+            ref: 'User'
+        }
+    ],
+    sentRequests: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'User'
+        }
+    ],
+    receivedRequests: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: 'User'
         }
     ]
 }, {

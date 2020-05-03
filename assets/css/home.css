@@ -19,14 +19,39 @@
       padding: 0px; }
     #home-container #feed-posts #post-container {
       background-color: white;
-      border-radius: 10px;
+      border-radius: 5px;
       margin: 10px 50px;
-      padding: 10px; }
+      padding: 10px;
+      box-shadow: 1px 1px 1px 1px grey; }
       #home-container #feed-posts #post-container a {
         text-decoration: none;
         color: black; }
       #home-container #feed-posts #post-container #post-content {
-        font-size: 1.2rem; }
+        font-size: 1.2rem;
+        font-weight: 600; }
+      #home-container #feed-posts #post-container #post-username {
+        font-size: 0.75rem; }
+        #home-container #feed-posts #post-container #post-username p {
+          margin: 0; }
+      #home-container #feed-posts #post-container #delete-like-container {
+        display: flex;
+        justify-content: space-between; }
+        #home-container #feed-posts #post-container #delete-like-container #like-container {
+          font-size: 0.75rem; }
+        #home-container #feed-posts #post-container #delete-like-container #delete-container a {
+          font-size: 0.75rem; }
+      #home-container #feed-posts #post-container #comment-container #comment-content {
+        background-color: #E9EBEE;
+        border-radius: 20px;
+        padding: 10px; }
+      #home-container #feed-posts #post-container #comment-container #comment-username {
+        font-size: 0.75rem; }
+        #home-container #feed-posts #post-container #comment-container #comment-username p {
+          margin: 10px; }
+      #home-container #feed-posts #post-container #comment-container #like-comment-container {
+        font-size: 0.75rem; }
+      #home-container #feed-posts #post-container #comment-container #delete-comment-container a {
+        font-size: 0.75rem; }
   #home-container #user-friends {
     width: 30%;
     padding: 10px;

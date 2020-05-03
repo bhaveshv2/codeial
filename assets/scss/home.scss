@@ -29,17 +29,56 @@
         }
         #post-container{
             background-color: white;
-            border-radius: 10px;
+            border-radius: 5px;
             margin:10px 50px;
             padding: 10px;
+            box-shadow: 1px 1px 1px 1px grey;
             a{
                 text-decoration:none;
                 color:black;
             }
             #post-content{
                 font-size:1.2rem;
+                font-weight: 600;
             }
-            
+            #post-username{
+                font-size:0.75rem;
+                p{
+                    margin:0;
+                }
+            }
+            #delete-like-container{
+                display:flex;
+                justify-content: space-between;
+                #like-container{
+                    font-size:0.75rem;
+                }
+                #delete-container{
+                    a{font-size:0.75rem;}
+                }
+            }
+
+            #comment-container{
+                #comment-content{
+                    background-color: #E9EBEE;
+                    border-radius: 20px;
+                    padding:10px;
+                }
+
+                #comment-username{
+                    font-size:0.75rem;
+                    p{
+                        margin:10px;
+                    }
+                }
+
+                #like-comment-container{
+                    font-size:0.75rem;
+                }
+                #delete-comment-container{
+                    a{font-size:0.75rem;}
+                }
+            }
         }
     }
 

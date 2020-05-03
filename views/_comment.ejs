@@ -1,28 +1,32 @@
-<li id="comment-<%= comment._id %>">
-    <p>
-        <% if (locals.user && locals.user.id == comment.user.id){ %>
-        
-        <small>
-            <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">Delete Comment</a>
-        </small>
-        <% } %>
-        <%= comment.content %>
-        <br>
-        <small>
-            <%= comment.user.name %>
-        </small>
-        <!--Display the likes of this comment, if the user is logged in, then show the link to toggle likes,else just show the count-->
-        <br>
-        
-        <small>
-            <% if (locals.user){ %>
-                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
-                        <%= comment.likes.length %> Likes
-                </a>
-            <% }else{ %>
-                <%= comment.likes.length %> Likes
-            <% } %>
-        </small>
-    </p>    
+<div id="comment-<%= comment._id %>">
+    <div id="comment-container">
+        <div id="comment-content">
+            <%= comment.content %>
+        </div>
 
-</li>
+        <div id="comment-username">
+            <%= comment.user.name %>
+            <p><%= comment.createdAt %></p>
+        </div>
+        <div id="delete-like-container">
+            <!--Display the likes of this comment, if the user is logged in, then show the link to toggle likes,else just show the count-->
+            <div id="like-comment-container">
+                <% if (locals.user){ %>
+                    <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                            <%= comment.likes.length %> <i class="fas fa-thumbs-up"></i>
+                    </a>
+                <% }else{ %>
+                    <%= comment.likes.length %> <i class="fas fa-thumbs-up"></i>
+                <% } %>
+            </div>
+            <div id="delete-comment-container">
+            <% if (locals.user && locals.user.id == comment.user._id){ %>
+                <div class="delete-comment-button">
+                    <a href="/comments/destroy/<%= comment.id %>"><i class="far fa-trash-alt"></i></a>
+                </div>
+            <% } %>
+            </div>
+        </div>
+        <br>
+    </div>    
+</div>

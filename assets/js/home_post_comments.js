@@ -15,7 +15,7 @@ class PostComments{
 
         let self = this;
         // call for all the existing comments
-        $(' .delete-comment-button', this.postContainer).each(function(){
+        $(' .delete-comment-button>a', this.postContainer).each(function(){
             self.deleteComment($(this));
         });
     }
@@ -34,7 +34,7 @@ class PostComments{
                 success: function(data){
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
-                    pSelf.deleteComment($(' .delete-comment-button', newComment));
+                    pSelf.deleteComment($(' .delete-comment-button>a', newComment));
 
                     //functionality if the toggle like button on the new comment
                     new ToggleLike($(' .toggle-like-button',newComment));
@@ -52,36 +52,37 @@ class PostComments{
                     console.log(error.responseText);
                 }
             });
-
-
         });
     }
 
 
     newCommentDom(comment){
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
-        return $(`<li id="comment-${ comment._id }">
-                        <p>
-                            
-                            <small>
-                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">Delete Comment</a>
-                            </small>
-                            
+        return $(`<div id="comment-${ comment._id }">
+                    <div id="comment-container">
+                        <div id="comment-content">
                             ${comment.content}
-                            <br>
-                            <small>
-                                ${comment.user.name}
-                            </small>
-                            <small>
-                            
-                            <a href="/likes/toggle/?id=${comment._id}&type=comment" class="toggle-likes-button" data-likes="0">
-                                0 Likes
-                            </a>
-                            
-                            </small>
-                        </p>    
+                        </div>
 
-                </li>`);
+                        <div id="comment-username">
+                            ${comment.user.name}
+                            ${comment.createdAt}
+                        </div>
+                        <div id="delete-like-container">
+                            <div id="like-comment-container">
+                                <a href="/likes/toggle/?id=${comment._id}&type=comment" class="toggle-likes-button" data-likes="0">
+                                    0 <i class="fas fa-thumbs-up"></i>
+                                </a>
+                            </div>
+                            <div id="delete-comment-container">
+                                <div class="delete-comment-button">
+                                    <a href="/comments/destroy/${comment._id}"><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>`);
     }
 
 
@@ -110,4 +111,12 @@ class PostComments{
 
         });
     }
+
+    convertCommentsToAjax(){
+        $(`#post-comments-${postId}>div`).each(function(){
+            let self = this;
+            let deleteCommentButton = $(' .delete-comment-button>a',self);
+            deleteComment(deleteCommentButton);
+        });
+    } 
 }

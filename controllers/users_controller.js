@@ -53,6 +53,67 @@ module.exports.update = async function(req,res){
     // }
 }
 
+module.exports.sendRequest = async function (req, res) {
+    if (req.user.id === req.params.id) {
+        try {
+            let senderUser = await User.findById(req.params.id);
+            let receiverUser = await User.findById(req.params.receiverId);
+
+            if (senderUser.friends.includes(receiverUser._id)) {
+                console.log('Already Friends');
+                throw error;
+            }
+
+            senderUser.sentRequests.unshift(receiverUser._id);
+            receiverUser.receivedRequests.unshift(senderUser._id);
+
+            await senderUser.save();
+            await receiverUser.save();
+
+            console.log('Request Sent');
+            return res.redirect('back');
+        } catch (err) {
+            console.log('error:', err);
+            return res.direct('back');
+        }
+    } else {
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+
+module.exports.acceptRequest = async function (req, res) {
+    if (req.user.id === req.params.id) {
+        try {
+            let senderUser = await User.findById(req.params.senderId);
+            let receiverUser = await User.findById(req.params.id);
+
+            if (receiverUser.receivedRequests.includes(senderUser._id) && senderUser.sentRequests.includes(receiverUser._id)) {
+                receiverUser.friends.push(senderUser._id);
+                receiverUser.receivedRequests.splice(receiverUser.receivedRequests.indexOf(senderUser._id), 1);
+                senderUser.receivedRequests.splice(senderUser.sentRequests.indexOf(receiverUser._id), 1);
+
+                await receiverUser.save();
+                await senderUser.save();
+
+                console.log('Request Accepted');
+                return res.redirect('back');
+            } else {
+                console.log('Freind Request Does Not Exist');
+                throw error;
+            }
+        } catch (err) {
+            req.flash('error',err);
+
+            return res.redirect('back');
+        }
+
+    } else {
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
+}
+
 // render the sign up page
 module.exports.signUp = function(req, res){
     if (req.isAuthenticated()){
@@ -71,7 +132,7 @@ module.exports.signIn = function(req, res){
         return res.redirect('/users/profile');
     }
     return res.render('user_sign_in', {
-        title: "Codeial | Sign In"
+        title: "SocioX | Sign In"
     })
 }
 

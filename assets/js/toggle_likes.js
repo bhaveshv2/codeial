@@ -19,13 +19,15 @@ class ToggleLike{
                 console.log(likesCount);
                 if (data.data.deleted == true){
                     likesCount -= 1;
-                    
+                    $(self).css('color','black');
                 }else{
                     likesCount += 1;
+                    $(self).css('color','blue');
                 }
 
                 $(self).attr('data-likes', likesCount);
-                $(self).html(`${likesCount} Likes`);
+                $(self).html(`${likesCount} <i class="fas fa-thumbs-up"></i>`);
+                
 
             })
             .fail(function(errData) {

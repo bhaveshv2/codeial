@@ -55,29 +55,30 @@
                                 ${ post.user.name}
                                 <p>${ post.createdAt}</p>
                             </div>
-                            <br>
-                        
-                            <button>
-                                <a class="toggle-likes-button" href="/likes/toggle/?id=${post._id}&type=Post" data-likes="0">
-                                    0 Likes
-                                </a>
-                            </button>
-                            
-                            <button class="delete-post-button">
-                                <a href="/posts/destroy/${post._id}">Delete Post</a>
-                            </button>
                         </div>
+                        <br>
                         <div class="post-comments">
-                            
                             <form action="/comments/create" method="POST">
                                 <input type="text" name="content" placeholder="Type here to add comment...">
                                 <input type="hidden" name="post" value="${ post._id}">
                                 <input type="submit" value="Add Comment">
                             </form>
-                        
-                            <div class="post-comment-lists">
-                                <ul id='post-comments-${ post._id}'>
-                                </ul>
+                        </div>
+                        <div id="delete-like-container">
+                            <div id="like-container>
+                                <a class="toggle-like-button" href="/likes/toggle/?id=${post._id}&type=Post" data-likes="0">
+                                    0 <i class="fas fa-thumbs-up"></i>
+                                </a>
+                            </div>
+                            <div id="delete-container">
+                                <div class="delete-post-button">
+                                    <a href="/posts/destroy/${post._id}"><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="post-comment-lists">
+                            <div id='post-comments-${ post._id}'>
                             </div>
                         </div>
                     </div>

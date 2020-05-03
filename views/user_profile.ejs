@@ -11,8 +11,17 @@
         <input type="file" name="avatar" id="" placeholder="Profile Picture">
         <input type="submit" value="update">
     </form>
+
+    <% for(request of user.receivedRequests){%>
+    <p><%=request._id%></p>
+    <form action="/users/accept-request/<%=profile_user.id%>/<%=request._id%>" method="POST">
+        <input type="submit" value="accept" name="receivedRequests" id="accept-<%=request._id%>">
+    </form>
+    <%}%>
+
 <%}else{%>
     <!-- else show the profile info -->
     <p><%= profile_user.name %></p>
     <p><%= profile_user.email %></p>
+    <a href="/users/send-request/<%=user.id%>/<%=profile_user.id%>">Send Request</a>
 <%}%>
