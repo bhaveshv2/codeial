@@ -1,3 +1,39 @@
 body{
     background-color: #E9EBEE;
+    #user-image{
+        width: 10%;
+        height:20%;
+        margin-left:46% ;
+        img{
+            border-radius:50%;
+            width: 100%;
+            height:100%;
+        }
+    }
+
+    #profile-update-container{
+        #update-form-container{
+            form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin:20px;
+                padding: 20px;
+                input{
+                    padding: 10px;
+                    margin:5px;
+                    text-align: center;
+                }
+                #update-button{
+                    width: 50%;
+                    padding:5px;
+                    margin-left:25%;
+                }
+            }
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
 }

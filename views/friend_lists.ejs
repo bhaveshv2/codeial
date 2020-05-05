@@ -1,0 +1,12 @@
+<!-- Page for the showing the friends associate with the user -->
+
+<link rel="stylesheet" href="/css/friend_lists.css">
+
+<div id="friend-list-container">
+    <h2>Friend List</h2>
+    <div id="friend-list">
+    <% for(friend of friends.friends){%>
+        <a href="/users/profile/<%=friend.id%>"><%=friend.name%></a>
+    <%}%>
+    </div>
+</div>

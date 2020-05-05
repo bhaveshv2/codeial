@@ -33,6 +33,18 @@
         font-size: 0.75rem; }
         #home-container #feed-posts #post-container #post-username p {
           margin: 0; }
+      #home-container #feed-posts #post-container .post-comments {
+        width: 100%;
+        display: flex;
+        justify-content: center; }
+        #home-container #feed-posts #post-container .post-comments form input {
+          width: 100%;
+          padding: 10px;
+          border-radius: 0; }
+        #home-container #feed-posts #post-container .post-comments form #comment-button {
+          width: 35%;
+          padding: 5px;
+          margin-top: 10px; }
       #home-container #feed-posts #post-container #delete-like-container {
         display: flex;
         justify-content: space-between; }
@@ -52,10 +64,21 @@
         font-size: 0.75rem; }
       #home-container #feed-posts #post-container #comment-container #delete-comment-container a {
         font-size: 0.75rem; }
-  #home-container #user-friends {
+  #home-container #users-friends-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 30%;
+    height: 100%;
     padding: 10px;
     border-left: 1px solid lightgrey; }
+    #home-container #users-friends-container a {
+      text-decoration: none;
+      color: black; }
+    #home-container #users-friends-container .f-u-text {
+      text-decoration: underline; }
+    #home-container #users-friends-container #friends-container a {
+      color: blue; }
   #home-container #signup-container {
     position: relative;
     left: 25%;
@@ -80,14 +103,14 @@
       border-radius: 0%; }
     #home-container #signup-container #signup-form-container form {
       text-align: center; }
-    #home-container #signup-container #google-signup-button {
+    #home-container #signup-container .google-github-signup-button {
       width: 25%;
-      margin-top: 10%;
+      margin-top: 10px;
       position: relative;
       left: 37.5%; }
-      #home-container #signup-container #google-signup-button button {
+      #home-container #signup-container .google-github-signup-button button {
         padding: 10px;
         width: 100%;
         border-radius: none; }
-        #home-container #signup-container #google-signup-button button a {
+        #home-container #signup-container .google-github-signup-button button a {
           text-decoration: none; }

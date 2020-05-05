@@ -5,15 +5,18 @@
 <div id="home-container">
     <div id="feed-posts">
         <div id="post-form-container">
-            <% if(locals.user){ %>
+        <% if(locals.user){ %>
             <h4>Create Post</h4>
             <form action="/posts/create" id="new-post-form" method="POST">
                 <textarea name="content" placeholder="Type Here..."></textarea>
+
                 <div id="post-button">
                     <input type="submit" value="Post">
                 </div>
             </form>
-            <% } %>
+
+            
+        <% } %>
         </div>
         <% if(locals.user){%>
         <div id="posts-list-container">
@@ -27,13 +30,21 @@
         </div>
     </div>
     
-    <div id="user-friends">
-        <h3>Friends</h3>
-        <% for(u of all_users){%>
-            <p>
-                <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
-            </p>
-        <%}%>
+    <div id="users-friends-container">
+        <div id="friends-container">
+            <div id="show-friends">
+                <h3 class="f-u-text">Friends List</h3>
+                <a href="/users/fetch-friends/<%=locals.user.id%>">Fetch Friends</a>
+            </div>
+        </div>
+        <div id="users-container">
+            <h3 class="f-u-text">Users</h3>
+            <% for(u of all_users){%>
+                <p>
+                    <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
+                </p>
+            <%}%>
+        </div>
     </div>
     <%}else{%>
     <div id="signup-container">
@@ -43,6 +54,7 @@
     <!-- <%- include('_chat_box'); -%> -->
     
 </div>
+
 
 <script src="/js/home_post_comments.js"></script>
 <script src="/js/home_posts.js"></script>

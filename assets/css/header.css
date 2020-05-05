@@ -29,10 +29,12 @@
       position: relative;
       bottom: 10px;
       border-radius: none; }
-      #layout-header nav .auth-links ul #signin-container #google-signin-button a {
-        color: black;
-        padding: 10px;
-        border-radius: none; }
+      #layout-header nav .auth-links ul #signin-container .google-github-signin-button {
+        border: 2px solid #000000;
+        padding: 10px; }
+        #layout-header nav .auth-links ul #signin-container .google-github-signin-button a {
+          color: black;
+          border-radius: none; }
   #layout-header nav a {
     color: white;
     text-decoration: none; }

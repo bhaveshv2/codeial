@@ -110,13 +110,5 @@ class PostComments{
             });
 
         });
-    }
-
-    convertCommentsToAjax(){
-        $(`#post-comments-${postId}>div`).each(function(){
-            let self = this;
-            let deleteCommentButton = $(' .delete-comment-button>a',self);
-            deleteComment(deleteCommentButton);
-        });
     } 
 }

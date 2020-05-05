@@ -47,6 +47,24 @@
                     margin:0;
                 }
             }
+            .post-comments{
+                width: 100%;
+                display:flex;
+                justify-content: center;
+                form{
+                    input{
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 0;
+                    }
+                    #comment-button{
+                        width: 35%;
+                        padding: 5px;
+                        margin-top: 10px;
+                        
+                    }
+                }
+            }
             #delete-like-container{
                 display:flex;
                 justify-content: space-between;
@@ -82,10 +100,25 @@
         }
     }
 
-    #user-friends{
+    #users-friends-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 30%;
+        height: 100%;
         padding: 10px;
         border-left: 1px solid lightgrey;
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        .f-u-text{
+            text-decoration: underline;
+        }
+        #friends-container{
+
+            a{color:blue;}
+        }
     }
 
     #signup-container{
@@ -122,9 +155,9 @@
             }
         }
 
-        #google-signup-button{
+        .google-github-signup-button{
             width: 25%;
-            margin-top: 10%;
+            margin-top: 10px;
             position: relative;
             left:37.5%;
             button{
@@ -138,3 +171,4 @@
         }
     }
 }
+

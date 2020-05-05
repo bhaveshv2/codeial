@@ -1,0 +1,19 @@
+#friend-list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2{
+        text-decoration: underline;
+        font-size: 2rem;
+    }
+    #friend-list{
+        display: flex;
+        flex-direction: column;
+        a{
+            text-decoration: none;
+            color:blue;
+            font-size: 1.5rem;
+        }
+    }
+}
