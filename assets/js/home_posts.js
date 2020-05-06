@@ -24,6 +24,7 @@
 
                     //enable the functionality of the toggle  like button on the post
                     new ToggleLike($(' .toggle-like-button',newPost));
+                    new ToggleLike($(' .toggle-unlike-button',newPost));
 
                     new Noty({
                         theme:'relax',
@@ -66,8 +67,11 @@
                         </div>
                         <div id="delete-like-container">
                             <div id="like-container>
-                                <a class="toggle-like-button" href="/likes/toggle/?id=${post._id}&type=Post" data-likes="0">
+                                <a class="toggle-like-button" href="/likes/toggle-like/?id=${post._id}&type=Post" data-likes="0">
                                     0 <i class="fas fa-thumbs-up"></i>
+                                </a>
+                                <a class="toggle-unlike-button" href="/likes/toggle-unlike/?id=${post._id}&type=Post" data-unlikes="0">
+                                    0 <i class="fas fa-thumbs-down"></i>
                                 </a>
                             </div>
                             <div id="delete-container">

@@ -15,7 +15,6 @@ const MongoStore = require('connect-mongo')(session);
 const sassMiddleware =require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
-const bluebird = require('bluebird');
 
 //Setup the chat server to be used with socket.io
 const chatServer = require('http').Server('app');

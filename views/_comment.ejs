@@ -12,11 +12,15 @@
             <!--Display the likes of this comment, if the user is logged in, then show the link to toggle likes,else just show the count-->
             <div id="like-comment-container">
                 <% if (locals.user){ %>
-                    <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
-                            <%= comment.likes.length %> <i class="fas fa-thumbs-up"></i>
+                    <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle-like/?id=<%=comment._id%>&type=Comment">
+                        <%= comment.likes.length %> <i class="fas fa-thumbs-up"></i>
+                    </a>
+                    <a class="toggle-unlike-button" data-unlikes="<%= comment.unlikes.length %>" href="/likes/toggle-unlike/?id=<%=comment._id%>&type=Comment">
+                        <%= comment.unlikes.length %> <i class="fas fa-thumbs-down"></i>
                     </a>
                 <% }else{ %>
                     <%= comment.likes.length %> <i class="fas fa-thumbs-up"></i>
+                    <%= comment.unlikes.length %> <i class="fas fa-thumbs-down"></i>
                 <% } %>
             </div>
             <div id="delete-comment-container">
