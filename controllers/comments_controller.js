@@ -4,6 +4,7 @@ const commentsMailer = require('../mailer/comment_mailer');
 const queue = require('../config/kue');
 const commentEmailWorker = require('../workers/comment_email_worker');
 const Like = require('../models/like');
+const Unlike = require('../models/unlike');
 
 
 
@@ -65,6 +66,8 @@ module.exports.destroy = async function(req,res){
 
             //delete the associated likes for this comment
             await Like.deleteMany({likeable:comment._id, onModel:'Comment'});
+            await Unlike.deleteMany({unlikeable:comment._id, onModel:'Comment'});
+
 
             if(req.xhr){
                 return res.status(200).json({

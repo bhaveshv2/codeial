@@ -27,7 +27,7 @@ const commentSchema = new mongoose.Schema({
             type:mongoose.Schema.ObjectId,
             ref:'Unlike'
         }
-    ]
+    ],
 },{
     timestamps:true,
 });

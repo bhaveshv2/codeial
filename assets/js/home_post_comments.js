@@ -38,7 +38,8 @@ class PostComments{
 
                     //functionality if the toggle like button on the new comment
                     new ToggleLike($(' .toggle-like-button',newComment));
-                    new ToggleLike($(' .toggle-unlike-button',newComment));
+                    
+                    new ToggleUnlike($(' .toggle-unlike-button',newComment));
 
                     new Noty({
                         theme: 'relax',
@@ -71,10 +72,10 @@ class PostComments{
                         </div>
                         <div id="delete-like-container">
                             <div id="like-comment-container">
-                                <a href="/likes/toggle-like/?id=${comment._id}&type=comment" class="toggle-likes-button" data-likes="0">
+                                <a href="/likes/toggle/?id=${comment._id}&type=comment" class="toggle-likes-button" data-likes="0">
                                     0 <i class="fas fa-thumbs-up"></i>
                                 </a>
-                                <a href="/likes/toggle-unlike/?id=${comment._id}&type=comment" class="toggle-unlikes-button" data-unlikes="0">
+                                <a class="toggle-unlike-button" data-unlikes="0" href="/unlikes/toggle-unlike/?id=${comment._id}&type=Comment">
                                     0 <i class="fas fa-thumbs-down"></i>
                                 </a>
                             </div>

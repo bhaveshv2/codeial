@@ -21,7 +21,7 @@ module.exports.home = async function(req, res){
             },
         })
         .populate('likes')
-        .populate('unlikes');                   //populate likes for the posts
+        .populate('unlikes');
 
         let users = await User.find({});
 

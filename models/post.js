@@ -29,7 +29,7 @@ const postSchema = new mongoose.Schema({
             type:mongoose.Schema.ObjectId,
             ref:'Unlike'
         }
-    ]   
+    ],  
 },{
     timestamps: true
 });

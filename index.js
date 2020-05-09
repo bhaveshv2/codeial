@@ -1,8 +1,8 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
+
 const port = 8000;
-const bodyParser = require("body-parser");
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const session = require('express-session');               // used for session cookie             
@@ -22,8 +22,6 @@ const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
 console.log('Chat server is listening on port 5000');
 
-app.use(bodyParser.json());
-
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
@@ -31,6 +29,7 @@ app.use(sassMiddleware({
     outputStyle: 'extended',
     prefix: '/css'
 }));
+
 app.use(express.urlencoded());
 
 app.use(cookieParser());
@@ -44,9 +43,6 @@ app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-
-
-
 
 // set up the view engine
 app.set('view engine', 'ejs');
@@ -66,7 +62,6 @@ app.use(session({
         {
             mongooseConnection: db,
             autoRemove: 'disabled'
-        
         },
         function(err){
             console.log(err ||  'connect-mongodb setup ok');
