@@ -47,11 +47,6 @@ module.exports.update = async function(req,res){
         return res.status(401).send('Unauthorized')
     }
 
-    
-    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-    //         return res.redirect('back');
-    //     });
-    // }
 }
 
 module.exports.sendRequest = async function (req, res) {

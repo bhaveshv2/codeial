@@ -1,7 +1,7 @@
 {
-  "name": "codeial",
+  "name": "SocioX",
   "version": "1.0.0",
-  "description": "My all social media web application",
+  "description": "My all social media web app",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

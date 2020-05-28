@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 let opts = {
     jwtFromRequest:ExtarctJWT.fromAuthHeaderAsBearerToken(),  //method creates a new extractor that looks for the JWT in the authorization header with the scheme 'bearer'.
-    secretOrKey : "codeial"                                 //using this key we're decrypting the header as it is used to encrypt it in users_api (line 21)
+    secretOrKey : "sociox"                                 //using this key we're decrypting the header as it is used to encrypt it in users_api (line 21)
 }
 
 //This is used for Authenticate the user

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost/codeial_development',{useNewUrlParser:true});
+mongoose.connect('mongodb://localhost/socioX_development',{useNewUrlParser:true});
 
 const db = mongoose.connection;
 

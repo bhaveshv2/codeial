@@ -32,14 +32,13 @@
         <p><%= profile_user.email %></p>
         <% for(friend of profile_user.friends){%>
             <% if(user.id == friend._id ){%>
-                You're friend of <%=user.name%>
-            <%}else{%>
-                <form action="/users/send-request/<%=user.id%>/<%=profile_user.id%>" method="POST">
-                    <input type="submit" value="Send Request">
-                </form>
+                You're already friend of <%=user.name%>.
             <%}%>
         <%}%>
         
+        <form action="/users/send-request/<%=user.id%>/<%=profile_user.id%>" method="POST">
+            <input type="submit" value="Send Request">
+        </form>
     <%}%>
     </div>
 </div>

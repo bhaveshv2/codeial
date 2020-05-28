@@ -3,12 +3,13 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    border: 1px dashed grey;
+    border: 1px solid grey;
     height: 350px;
 	width: 300px;
 	background: white;
 	padding: 5px;
 	box-shadow: 1px 1px 1px 1px lightgrey;
+	
 
     #chat-messages-list{
     	list-style: none;
@@ -19,10 +20,12 @@
 
 	    .other-message{
 		    text-align: left;
-		    padding: 5px;
+			padding: 5px;
+			display: flex;
+			flex-direction: column;
 		    span{
 		    	display: inline-block;
-	    		padding: 15px;
+	    		padding: 5px;
 		    	background-color: #ffa0a0;
 		    }
 		    
@@ -31,12 +34,12 @@
 	    .self-message{
 		    text-align: right;
 		    padding: 5px;
-		   
+			display: flex;
+			flex-direction: column;
 		    span{
-		    	 
-	    		display: inline-block;
-	    		padding: 15px;
-    			background-color: #a0dcff;
+	    		padding: 5px;
+				background-color: #a0dcff;
+				
 		    }
 		   
 	    }
